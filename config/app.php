@@ -176,6 +176,10 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
+        /*
+         * Custom Services
+         */
+        App\Repositories\RepositoriesServiceProvider::class,
 
     ],
 

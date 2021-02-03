@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,12 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::group(['prefix' => 'users'], function () {
+    Route::get('/', [UserController::class, 'index']);
+    Route::get('/show/{id}', [UserController::class, 'show']);
+    Route::get('/delete/{id}', [UserController::class, 'destroy'])
+        ->name('delete-user');
+    Route::get('/search', [UserController::class, 'search'])
+        ->name('search-users');
+});

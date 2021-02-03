@@ -25,6 +25,7 @@ class CreateNewUser implements CreatesNewUsers
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'access_level_id' => ['required', 'integer'],
             'password' => $this->passwordRules(),
+            'is_deleted' => ['integer'],
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
 
@@ -33,6 +34,7 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'access_level_id' => $input['access_level_id'],
             'password' => Hash::make($input['password']),
+            'is_deleted' => 0
         ]);
     }
 }
