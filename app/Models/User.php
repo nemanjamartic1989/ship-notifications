@@ -10,6 +10,9 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
+use App\Models\Ship;
+use App\Models\CrewMember;
+
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -60,4 +63,14 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function ships()
+    {
+        return $this->hasMany(Ship::class);
+    }
+
+    public function crewMembers()
+    {
+        return $this->hasMany(CrewMember::class);
+    }
 }

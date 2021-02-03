@@ -1,0 +1,24 @@
+<?php 
+
+namespace App\Repositories;
+
+use Illuminate\Http\Request;
+
+interface CrewMembersRepositoryInterface
+{
+    public function getAll();
+
+    public function createCrewMember();
+
+    public function editCrewMember($id);
+
+    public function storeCrewMember($request);
+
+    public function updateCrewMember(Request $request, $id);
+
+    public function searchCrewMemberData($text);
+
+    public function showCrewMember($id);
+
+    public function deleteCrewMember($id);
+}

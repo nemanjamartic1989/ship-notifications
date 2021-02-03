@@ -13,9 +13,12 @@ class CreateRanksTable extends Migration
             $table->id();
             $table->string('name');
             $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('crew_member_id');
             $table->timestamps();
 
             $table->foreign('created_by')->references('id')->on('users');
+
+            $table->foreign('crew_member_id')->references('id')->on('crew_members');
         });
     }
 

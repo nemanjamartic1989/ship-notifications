@@ -124,8 +124,7 @@ class ShipRepository implements ShipRepositoryInterface
                 'ships.image',
                 'ships.created_at',
                 'users.name as fullname'
-            )
-            ->first();
+            )->first();
     }
 
     public function deleteShip($id)

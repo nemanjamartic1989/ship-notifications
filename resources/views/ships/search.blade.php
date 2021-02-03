@@ -2,7 +2,10 @@
 <tr>
     <td>{{ $ship->ship_name }}</td>
     <td>{{ $ship->serial_number }}</td>
-    <td>{{ $ship->image }}</td>
+    <td><a href="{{ url('images/ships', $ship->image)}}">
+            <img src="{{ url('images/ships', $ship->image) }}" width="10%">
+        </a>
+    </td>
     <td>{{ $ship->fullname }}</td>
     <td>
         <a href="{{ url('ships/show', $ship->id) }}" class="btn btn-primary">Show</a>

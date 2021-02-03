@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShipController;
+use App\Http\Controllers\CrewMemberController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -45,4 +47,19 @@ Route::group(['prefix' => 'ships'], function () {
         ->name('delete-ship');
     Route::get('/search', [ShipController::class, 'search'])
         ->name('search-ships');
+});
+
+Route::group(['prefix' => 'crew-members'], function () {
+    Route::get('/', [CrewMemberController::class, 'index']);
+    Route::get('/create', [CrewMemberController::class, 'create']);
+    Route::get('/edit/{id}', [CrewMemberController::class, 'edit']);
+    Route::get('/show/{id}', [CrewMemberController::class, 'show']);
+    Route::post('/store', [CrewMemberController::class, 'store'])
+        ->name('store-crew-member');
+    Route::post('/update/{id}', [CrewMemberController::class, 'update'])
+        ->name('update-crew-member');
+    Route::get('/delete/{id}', [CrewMemberController::class, 'destroy'])
+        ->name('delete-crew-member');
+    Route::get('/search', [CrewMemberController::class, 'search'])
+        ->name('search-crew-members');
 });
