@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ShipController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +30,19 @@ Route::group(['prefix' => 'users'], function () {
         ->name('delete-user');
     Route::get('/search', [UserController::class, 'search'])
         ->name('search-users');
+});
+
+Route::group(['prefix' => 'ships'], function () {
+    Route::get('/', [ShipController::class, 'index']);
+    Route::get('/create', [ShipController::class, 'create']);
+    Route::get('/edit/{id}', [ShipController::class, 'edit']);
+    Route::get('/show/{id}', [ShipController::class, 'show']);
+    Route::post('/store', [ShipController::class, 'store'])
+        ->name('ships-store');
+    Route::post('/update/{id}', [ShipController::class, 'update'])
+        ->name('update-ship');
+    Route::get('/delete/{id}', [ShipController::class, 'destroy'])
+        ->name('delete-ship');
+    Route::get('/search', [ShipController::class, 'search'])
+        ->name('search-ships');
 });

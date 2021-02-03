@@ -18,6 +18,9 @@
                     <x-jet-nav-link href="/users">
                         {{ __('Users') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="/ships">
+                        {{ __('Ships') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 
