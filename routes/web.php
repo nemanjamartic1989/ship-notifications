@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShipController;
 use App\Http\Controllers\CrewMemberController;
 use App\Http\Controllers\RankController;
+use App\Http\Controllers\NotificationController;
 
 
 /*
@@ -78,4 +79,11 @@ Route::group(['prefix' => 'ranks'], function () {
         ->name('delete-rank'); // In fact, this is update field in database where this item will not displayed.
     Route::get('/search', [RankController::class, 'search'])
         ->name('search-ranks');
+});
+
+Route::group(['prefix' => 'notifications'], function () {
+    Route::get('/', [NotificationController::class, 'index']);
+    Route::get('/create', [NotificationController::class, 'create']);
+    Route::post('/store', [RankController::class, 'store'])
+        ->name('store-notification');
 });

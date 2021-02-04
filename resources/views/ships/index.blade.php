@@ -35,6 +35,7 @@ Ships
                     @endif
                 </div>
 
+                @if(isset($ships))
                 <table id="shipTable" class="table table-hover">
                     <thead>
                         <th>Name</th>
@@ -70,6 +71,7 @@ Ships
                         </tbdy>
                 </table>
                 {{ $ships->links() }}
+                @endif
             </div>
 
             <br>

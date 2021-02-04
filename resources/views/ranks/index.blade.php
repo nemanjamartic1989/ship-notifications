@@ -33,6 +33,7 @@ Crew Members
                     @endif
                 </div>
 
+                @if(isset($ranks))
                 <table id="rankTable" class="table table-hover">
                     <thead>
                         <th>Name</th>
@@ -62,6 +63,7 @@ Crew Members
                         </tbdy>
                 </table>
                 {{ $ranks->links() }}
+                @endif
             </div>
 
             <br>

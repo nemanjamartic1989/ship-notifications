@@ -33,6 +33,7 @@ Crew Members
                     @endif
                 </div>
 
+                @if(isset($crewMembers))
                 <table id="crewMemberTable" class="table table-hover">
                     <thead>
                         <th>First Name</th>
@@ -68,6 +69,7 @@ Crew Members
                         </tbdy>
                 </table>
                 {{ $crewMembers->links() }}
+                @endif
             </div>
 
             <br>
