@@ -2,7 +2,7 @@
 <tr>
     <td>{{ $ship->ship_name }}</td>
     <td>{{ $ship->serial_number }}</td>
-    <td><a href="{{ url('images/ships', $ship->image)}}">
+    <td class="col-sm-6"><a href="{{ url('images/ships', $ship->image)}}">
             <img src="{{ url('images/ships', $ship->image) }}" width="10%">
         </a>
     </td>

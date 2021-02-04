@@ -27,6 +27,9 @@
                     <x-jet-nav-link href="/ranks">
                         {{ __('Ranks') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="/notifications">
+                        {{ __('Notifications') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 

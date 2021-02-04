@@ -49,9 +49,9 @@ Ships
                         <tr>
                             <td>{{ $ship->ship_name }}</td>
                             <td>{{ $ship->serial_number }}</td>
-                            <td>
+                            <td class="col-sm-6">
                                 <a href="{{ url('images/ships', $ship->image)}}">
-                                    <img src="{{ url('images/ships', $ship->image) }}" width="10%">
+                                    <img src="{{ url('images/ships', $ship->image) }}" width="20%">
                                 </a>
                             </td>
                             <td>{{ $ship->fullname }}</td>
@@ -116,6 +116,7 @@ Ships
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
+            method: "PUT",
             url: dataUrl,
             success: function(data) {
                 $("#shipModal").modal('hide');
@@ -132,7 +133,6 @@ Ships
         $.ajax({
             url: "{{ route('search-ships') }}",
             data: {
-                text,
                 text
             },
             success: function(data) {

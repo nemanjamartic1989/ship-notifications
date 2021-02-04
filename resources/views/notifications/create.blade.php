@@ -39,7 +39,7 @@ Create Crew Member
                         <form class="form-horizontal" action="{{ route('store-notification') }}" method="POST">
                         @csrf
                         <div class="form-group p-2 col-md-6">
-                            <label for="crew_member_id">Select Ship</label>
+                            <label for="crew_member_id">Select Crew Members</label>
                             <select id="crew_member_id" name="crew_member_id" class="form-control">
                                 @foreach($crewMembers as $crewMember)
                                 <option value="{{ $crewMember->id }}">{{ $crewMember->name }} {{ $crewMember->surname }}</option>

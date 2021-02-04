@@ -109,6 +109,7 @@ Crew Members
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             url: dataUrl,
+            method: "PUT",
             success: function(data) {
                 $("#rankModal").modal('hide');
                 $("#rankTable").load(location.href + " #rankTable");

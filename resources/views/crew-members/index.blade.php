@@ -114,6 +114,7 @@ Crew Members
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
+            method: "PUT",
             url: dataUrl,
             success: function(data) {
                 $("#crewMemberModal").modal('hide');

@@ -104,6 +104,7 @@ Users
     $("#confirm_button").click(function() {
         $.ajax({
             url: dataUrl,
+            method: "PUT",
             success: function(data) {
                 $("#userModal").modal('hide');
                 $("#userTable").load(location.href + " #userTable");
@@ -120,7 +121,6 @@ Users
             url: "{{ route('search-users') }}",
             data: {
                 text,
-                text
             },
             success: function(data) {
                 $('#usersData').html(data);
