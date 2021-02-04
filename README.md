@@ -66,3 +66,12 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 composer require laravel/jetstream
 php artisan jetstream:install livewire
 npm install && npm run dev
+php artisan migrate
+php artisan db:seed
+
+## Project Description
+
+Goal of project: Create Ship Notification system with follow modules: users, Crew Members, Ranks, Ships CRUD.
+
+System build in Laravel 8+ version, using next frontend technologies: Javascript, JQuery, Bootstrap, HTML, CSS
+
