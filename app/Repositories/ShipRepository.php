@@ -38,14 +38,6 @@ class ShipRepository implements ShipRepositoryInterface
 
     public function storeShip($request)
     {
-        $validator = Validator::make($request->all(), Ship::$created_rules);
-
-        if ($validator->fails()) {
-            return redirect('ships/create')
-                ->with('status', 'danger')
-                ->with('errors', $validator->errors());
-        }
-
         if ($request->file('image')) {
             $image = time().'.ships.'.$request->image->getClientOriginalExtension();
             $request->image->move(public_path('/images/ships'), $image);
@@ -65,20 +57,12 @@ class ShipRepository implements ShipRepositoryInterface
     }
 
     public function updateShip(Request $request, $id)
-    {
-        $validator = Validator::make($request->all(), Ship::$updated_rules);
-
-        if ($validator->fails()) {
-            return redirect('ships/edit/' . $id)
-                ->with('status', 'danger')
-                ->with('errors', $validator->errors());
-        }
-        
+    { 
         $ship = Ship::findOrFail($id);
 
         if ($request->file('image')) {
 
-            $validator[] = $request->validate([
+            $request->validate([
                 'image' => 'required|mimes:jpeg,jpg,png,gif|max:2048'
             ]);
             
@@ -114,7 +98,7 @@ class ShipRepository implements ShipRepositoryInterface
 
     public function showShip($id)
     {
-        return Ship::join('users', 'ships.created_by', '=', 'users.id')
+        return Ship::with("crewMembers")->join('users', 'ships.created_by', '=', 'users.id')
             ->where('ships.is_deleted', 0)
             ->where('ships.id', $id)
             ->select(

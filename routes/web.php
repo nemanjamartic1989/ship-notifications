@@ -19,7 +19,7 @@ use App\Http\Controllers\RankController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/dashboard');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -30,7 +30,7 @@ Route::group(['prefix' => 'users'], function () {
     Route::get('/', [UserController::class, 'index']);
     Route::get('/show/{id}', [UserController::class, 'show']);
     Route::get('/delete/{id}', [UserController::class, 'destroy'])
-        ->name('delete-user');
+        ->name('delete-user'); // In fact, this is update field in database where this item will not displayed.
     Route::get('/search', [UserController::class, 'search'])
         ->name('search-users');
 });
@@ -45,7 +45,7 @@ Route::group(['prefix' => 'ships'], function () {
     Route::post('/update/{id}', [ShipController::class, 'update'])
         ->name('update-ship');
     Route::get('/delete/{id}', [ShipController::class, 'destroy'])
-        ->name('delete-ship');
+        ->name('delete-ship'); // In fact, this is update field in database where this item will not displayed.
     Route::get('/search', [ShipController::class, 'search'])
         ->name('search-ships');
 });
@@ -60,7 +60,7 @@ Route::group(['prefix' => 'crew-members'], function () {
     Route::post('/update/{id}', [CrewMemberController::class, 'update'])
         ->name('update-crew-member');
     Route::get('/delete/{id}', [CrewMemberController::class, 'destroy'])
-        ->name('delete-crew-member');
+        ->name('delete-crew-member'); // In fact, this is update field in database where this item will not displayed.
     Route::get('/search', [CrewMemberController::class, 'search'])
         ->name('search-crew-members');
 });
@@ -75,7 +75,7 @@ Route::group(['prefix' => 'ranks'], function () {
     Route::post('/update/{id}', [RankController::class, 'update'])
         ->name('update-rank');
     Route::get('/delete/{id}', [RankController::class, 'destroy'])
-        ->name('delete-rank');
+        ->name('delete-rank'); // In fact, this is update field in database where this item will not displayed.
     Route::get('/search', [RankController::class, 'search'])
         ->name('search-ranks');
 });

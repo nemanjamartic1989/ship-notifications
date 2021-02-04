@@ -39,7 +39,8 @@ class UserController extends Controller
     {
         $user = $this->userRepository->showUser($id);
 
-        return view('users.show', ['user' => $user]);
+        return view('users.show')
+            ->with(['user', $user]);
     }
 
     public function destroy($id)

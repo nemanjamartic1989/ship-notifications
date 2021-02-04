@@ -5,7 +5,7 @@ Edit Crew Member
 @extends('includes.master')
 
 @section('main')
-<div class="container block-template">
+<div class="container custom-container">
     <div class="row justify-content-center">
         <div class="col-md-8">
 
@@ -45,7 +45,7 @@ Edit Crew Member
                         </div>
                         <div class="form-group p-2">
                             <a href="/ranks" class="btn btn-primary">Back</a>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </form>      
                 </div>            

@@ -50,8 +50,8 @@ Edit Crew Member
                         </div>
                         <div class="form-group p-2">
                             <label for="email">Email</label>
-                            <input type="text" class="form-control" id="email" name="email" placeholder="email" value="{{ $crewMember->email}}">
-                            <span id="crewMemberEmailError" class="form-text text-error"></span>
+                            <input type="text" class="form-control email-validation" id="email" name="email" placeholder="email" value="{{ $crewMember->email}}">
+                            <span id="crewMemberEmailError" class="form-text email-error text-danger"></span>
                         </div>
                         <div class="form-group p-2">
                             <label for="ship_id">Select Ship</label>
@@ -63,7 +63,7 @@ Edit Crew Member
                         </div>
                         <div class="form-group p-2">
                             <a href="/crew-members" class="btn btn-primary">Back</a>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </form>      
                 </div>            

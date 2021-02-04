@@ -39,6 +39,14 @@ class ShipController extends Controller
 
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), Ship::$created_rules);
+
+        if ($validator->fails()) {
+            return redirect('ships/create')
+                ->with('status', 'danger')
+                ->with('errors', $validator->errors());
+        }
+        
         $ship = $this->shipRepository->storeShip($request);
 
         $ship->save();
@@ -66,6 +74,14 @@ class ShipController extends Controller
 
     public function update(Request $request, $id)
     {
+        $validator = Validator::make($request->all(), Ship::$updated_rules);
+
+        if ($validator->fails()) {
+            return redirect('ships/edit/' . $id)
+                ->with('status', 'danger')
+                ->with('errors', $validator->errors());
+        }
+
         $ship = $this->shipRepository->updateShip($request, $id);
 
         $ship->update();

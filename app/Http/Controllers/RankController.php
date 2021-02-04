@@ -56,6 +56,14 @@ class RankController extends Controller
 
     public function store(request $request)
     {
+        $validator = Validator::make($request->all(), Rank::$rules);
+
+        if ($validator->fails()) {
+            return redirect('ranks/create')
+                ->with('status', 'Validation error!')
+                ->with('errors', $validator->errors());
+        }
+        
         $rank = $this->rankRepository->storeRank($request);
 
         $rank->save();
@@ -66,6 +74,14 @@ class RankController extends Controller
 
     public function update(Request $request, $id)
     {
+        $validator = Validator::make($request->all(), Rank::$rules);
+
+        if ($validator->fails()) {
+            return redirect('ranks/edit/' . $id)
+                ->with('status', 'danger')
+                ->with('errors', $validator->errors());
+        }
+        
         $rank = $this->rankRepository->updateRank($request, $id);
 
         $rank->update();

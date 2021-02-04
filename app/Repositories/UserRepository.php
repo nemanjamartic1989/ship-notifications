@@ -22,8 +22,16 @@ class UserRepository implements UserRepositoryInterface
 
     public function showUser($id)
     {
-        return User::where('is_deleted', 0)
-            ->where('id', $id)->first();
+        return User::leftJoin('access_levels', 'users.access_level_id', '=', 'access_levels.id')
+            ->where('users.is_deleted', 0)
+            ->where('users.id', $id)
+            ->select(
+                'users.id',
+                'users.name as fullname',
+                'users.email',
+                'access_levels.name as access_level_name'
+            )
+            ->first();
     }
 
     public function deleteUser($id)

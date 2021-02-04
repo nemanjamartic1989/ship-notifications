@@ -83,7 +83,6 @@ Crew Members
         <div class="modal-content text-center">
             <div class="modal-header bg-primary">
                 <h2 class="modal-title white">Confirmation</h2>
-                <button type="button" class="close" data-dismiss="modal" aria-label="close"></button>
             </div>
             <div class="modal-body">
                 <h5 align="center">Are you sure want to delete this Crew member?</h5>
@@ -91,7 +90,7 @@ Crew Members
             </div>
             <div class="modal-footer">
                 <button type="button" name="confirm_button" id="confirm_button" class="btn btn-danger">Confirm</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-default close-modal" data-dismiss="modal">Cancel</button>
             </div>
         </div>
     </div>
@@ -110,6 +109,9 @@ Crew Members
 
     $("#confirm_button").click(function() {
         $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
             url: dataUrl,
             success: function(data) {
                 $("#crewMemberModal").modal('hide');

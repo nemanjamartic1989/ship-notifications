@@ -5,7 +5,7 @@ Users
 @extends('includes.master')
 
 @section('main')
-<div class="container">    
+<div class="container custom-container">    
     <div class="row justify-content-center">        
         <div class="col-md-12">        
             <a href=" /dashboard">Dashboard</a> /         
@@ -18,16 +18,16 @@ Users
                                 
                 <div class="card-body">                                        
                     <div class="container">                    
-                        <table class="table col-md-12">            
+                        <table class="table col-md-10">            
                             <thead>                
                                 <tr>                
                                     <th scope="col"><label for="form_name">Full Name</label></th>                    
                                     <td>                        
                                         <div class="col-md-12">                            
                                             <div class="form-group">  
-                                            @if(isset($user->name))                              
-                                                {{ $user->name }} 
-                                            @endif                           
+                                                @if(isset($user->fullname))                              
+                                                {{ $user->fullname }} 
+                                                @endif                           
                                             </div>                       
                                         </div>                    
                                     </td>                
@@ -37,9 +37,9 @@ Users
                                     <td>
                                         <div class="col-md-12">                        
                                             <div class="form-group"> 
-                                            @if(isset($user->email))                            
+                                                @if(isset($user->email))                            
                                                 {{ $user->email }} 
-                                            @endif                       
+                                                @endif                       
                                             </div>                    
                                         </div>
                                     </td>                
@@ -49,9 +49,9 @@ Users
                                     <td>
                                         <div class="col-md-12">                        
                                             <div class="form-group">   
-                                            @if(isset($user->access_level_name))                         
+                                                @if(isset($user->access_level_name))                         
                                                 {{ $user->access_level_name }}
-                                            @endif                        
+                                                @endif                        
                                             </div>                    
                                         </div>
                                     </td>                
@@ -60,7 +60,7 @@ Users
                         </table>                       
                     </div>            
                 </div>                        
-                <a href="/users" class="btn btn-primary">Back</a>                
+                <a href=" /users" class="btn btn-primary">Back</a>                
             </div>            
         </div>        
     </div>    

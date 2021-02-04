@@ -3,9 +3,9 @@
 @endsection
 
 @extends('includes.master')
-<div class="container block-template">
+<div class="container custom-container">
     <div class="row justify-content-center">
-        <div class="com-md-12">
+        <div class="com-md-10">
 
             <a href="/dashboard">Dashboard</a> / <a href="/ships">Ships</a> / Show Ship
 
@@ -59,6 +59,18 @@
                                     <th scope="col">Created By</th>
                                     <td>
                                         {{ $ship->fullname }} at {{ $ship->created_at }}
+                                    </td>
+                                </th>
+                            </tr>
+                            @endif
+                            @if(isset($ship->crewMembers))
+                            <tr>
+                                <th>
+                                    <th scope="col">Crew Members assigned to <span class="text-danger">{{ $ship->ship_name }}</span></th>
+                                    <td>
+                                    @foreach ($ship->crewMembers as $crewMember)
+                                        {{ $crewMember->name }} {{ $crewMember->surname }}, <br>    
+                                    @endforeach           
                                     </td>
                                 </th>
                             </tr>

@@ -5,9 +5,9 @@ Edit Ship
 @extends('includes.master')
 
 @section('main')
-<div class="container block-template">
+<div class="container custom-container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-10">
 
             <a href="/dashboard">Dashboard</a> / <a href="/ships">Ships</a> / Edit
 
@@ -56,7 +56,7 @@ Edit Ship
                         </div>
                         <div class="form-control p-2">
                             <a href="/ships" class="btn btn-primary">Back</a>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </form>      
                 </div>            

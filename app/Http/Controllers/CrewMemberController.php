@@ -6,6 +6,7 @@ use App\Repositories\CrewMembersRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Ship;
+use App\Models\CrewMember;
 use Illuminate\Support\Facades\Auth;
 
 class CrewMemberController extends Controller
@@ -56,6 +57,14 @@ class CrewMemberController extends Controller
 
     public function store(request $request)
     {
+        $validator = Validator::make($request->all(), CrewMember::$rules);
+
+        if ($validator->fails()) {
+            return redirect('crew-members/create')
+                ->with('status', 'Validation errors!')
+                ->with('errors', $validator->errors());
+        }
+
         $crewMember = $this->crewMemberRepository->storeCrewmember($request);
 
         $crewMember->save();
@@ -66,6 +75,14 @@ class CrewMemberController extends Controller
 
     public function update(Request $request, $id)
     {
+        $validator = Validator::make($request->all(), CrewMember::$rules);
+
+        if ($validator->fails()) {
+            return redirect('crew-members/edit/' . $id)
+                ->with('status', 'Validation errors!')
+                ->with('errors', $validator->errors());
+        }
+
         $crewMember = $this->crewMemberRepository->updateCrewMember($request, $id);
 
         $crewMember->update();

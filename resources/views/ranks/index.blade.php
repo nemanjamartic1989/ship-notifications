@@ -77,7 +77,6 @@ Crew Members
         <div class="modal-content text-center">
             <div class="modal-header bg-primary">
                 <h2 class="modal-title white">Confirmation</h2>
-                <button type="button" class="close" data-dismiss="modal" aria-label="close"></button>
             </div>
             <div class="modal-body">
                 <h5 align="center">Are you sure want to delete this Rank?</h5>
@@ -95,8 +94,8 @@ Crew Members
     var dataRankId, dataUrl, dataRankName;
 
     $(".remove-rank").on("click", function() {
-        dataCrewMemberId = $(this).attr('data-rank-id');
-        dataCrewMemberName = $(this).attr('data-rank-name');
+        dataRankId = $(this).attr('data-rank-id');
+        dataRankName = $(this).attr('data-rank-name');
         dataUrl = $(this).attr('data-url');
         $('#rankModal').modal('show');
         $('#rankName').text(dataRankName);
@@ -104,6 +103,9 @@ Crew Members
 
     $("#confirm_button").click(function() {
         $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
             url: dataUrl,
             success: function(data) {
                 $("#rankModal").modal('hide');

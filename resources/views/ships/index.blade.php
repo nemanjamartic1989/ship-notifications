@@ -85,7 +85,6 @@ Ships
         <div class="modal-content text-center">
             <div class="modal-header bg-primary">
                 <h2 class="modal-title white">Confirmation</h2>
-                <button type="button" class="close" data-dismiss="modal" aria-label="close"></button>
             </div>
             <div class="modal-body">
                 <h5 align="center">Are you sure want to delete this ship?</h5>
@@ -107,11 +106,14 @@ Ships
         dataShipName = $(this).attr('data-ship-name');
         dataUrl = $(this).attr('data-url');
         $('#shipModal').modal('show');
-        $('#shipName').text(datashipName);
+        $('#shipName').text(dataShipName);
     });
 
     $("#confirm_button").click(function() {
         $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
             url: dataUrl,
             success: function(data) {
                 $("#shipModal").modal('hide');

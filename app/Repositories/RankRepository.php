@@ -40,14 +40,6 @@ class RankRepository implements RankRepositoryInterface
 
     public function storeRank($request)
     {
-        $validator = Validator::make($request->all(), Rank::$rules);
-
-        if ($validator->fails()) {
-            return redirect('ranks/create')
-                ->with('status', 'danger')
-                ->with('errors', $validator->errors());
-        }
-
         $rank = new Rank;
 
         $rank->name = $request->name;
@@ -59,14 +51,6 @@ class RankRepository implements RankRepositoryInterface
 
     public function updateRank(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), Rank::$rules);
-
-        if ($validator->fails()) {
-            return redirect('ranks/edit/' . $id)
-                ->with('status', 'danger')
-                ->with('errors', $validator->errors());
-        }
-
         $rank = Rank::findOrFail($id);
 
         $rank->name = $request->name;

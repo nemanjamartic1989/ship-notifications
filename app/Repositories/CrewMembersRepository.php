@@ -14,8 +14,7 @@ class CrewMembersRepository implements CrewMembersRepositoryInterface
 {
     public function getAll()
     {
-        return CrewMember::with(['ship', 'user'])
-            ->where('is_deleted', 0)
+        return CrewMember::with(['ship', 'user'])->where('crew_members.is_deleted', 0)
             ->paginate(10);
     }
 
@@ -40,14 +39,6 @@ class CrewMembersRepository implements CrewMembersRepositoryInterface
 
     public function storeCrewMember($request)
     {
-        $validator = Validator::make($request->all(), CrewMember::$rules);
-
-        if ($validator->fails()) {
-            return redirect('crew-members/create')
-                ->with('status', 'danger')
-                ->with('errors', $validator->errors());
-        }
-
         $crewMember = new CrewMember;
 
         $crewMember->name = $request->name;
@@ -62,14 +53,6 @@ class CrewMembersRepository implements CrewMembersRepositoryInterface
 
     public function updateCrewMember(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), CrewMember::$rules);
-
-        if ($validator->fails()) {
-            return redirect('ships/edit/' . $id)
-                ->with('status', 'danger')
-                ->with('errors', $validator->errors());
-        }
-
         $crewMember = CrewMember::findOrFail($id);
 
         $crewMember->name = $request->name;
