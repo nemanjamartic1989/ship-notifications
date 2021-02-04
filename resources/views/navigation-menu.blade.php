@@ -24,7 +24,7 @@
                     <x-jet-nav-link href="/crew-members">
                         {{ __('Crew Members') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="/ships">
+                    <x-jet-nav-link href="/ranks">
                         {{ __('Ranks') }}
                     </x-jet-nav-link>
                 </div>

@@ -5,19 +5,19 @@ Crew Members
 @extends('includes.master')
 
 @section('main')
-<div class="container custom-container">
+<div class="container" style="margin-top: 50px;">
     <div class="row justify-content-center">
         <div class="col-md-12">
 
-            <a href="/dashboard">Dashboard</a> / Crew Members
+            <a href="/dashboard">Dashboard</a> / Ranks
 
-            <input type="text" name="searchCrewMembers" id="searchCrewMembers" class="float-right search-input" placeholder="search">
+            <input type="text" name="searchRanks" id="searchRanks" class="float-right search-input" placeholder="search">
 
             <br></br>
 
             <div class="card">
                 <div class="card-header bg-primary">
-                    <h5 class="text-white">List Of Crew Members</h5>
+                    <h5 class="text-white">Ranks</h5>
                 </div>
 
                 <div class="card-body">
@@ -33,30 +33,24 @@ Crew Members
                     @endif
                 </div>
 
-                <table id="crewMemberTable" class="table table-hover">
+                <table id="rankTable" class="table table-hover">
                     <thead>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        <th>Ship</th>
+                        <th>Name</th>
                         <th>Created By</th>
                         <th>Actions</th>
                     </thead>
-                    <tbody id="crewMemberData">
-                        @foreach($crewMembers as $crewMember)
+                    <tbody id="rankData">
+                        @foreach($ranks as $rank)
                         <tr>
-                            <td>{{ $crewMember->name }}</td>
-                            <td>{{ $crewMember->surname }}</td>
-                            <td>{{ $crewMember->email }}</td>
-                            <td>{{ $crewMember->ship->name }}</td>
-                            <td>{{ $crewMember->created_by }}</td>
+                            <td>{{ $rank->name }}</td>
+                            <td>{{ $rank->fullname }}</td>
                             <td>
                                 @if(Auth::user()->access_level_id == 1)
-                                <a href="{{ url('crew-members/show', $crewMember->id) }}" class="btn btn-primary">Show</a>
-                                <a href="{{ url('crew-members/edit', $crewMember->id) }}" class="btn btn-success">Edit</a>
-                                <a href="javascript:void(0)" class="remove-crew-member btn btn-danger" 
-                                    data-crew-member-id="{{ $crewMember->id }}" data-url="{{ route('delete-crew-member', $crewMember->id) }}" 
-                                    data-crew-member-name="{{ $crewMember->name }} {{ $crewMember->surname }}">
+                                <a href="{{ url('ranks/show', $rank->id) }}" class="btn btn-primary">Show</a>
+                                <a href="{{ url('ranks/edit', $rank->id) }}" class="btn btn-success">Edit</a>
+                                <a href="javascript:void(0)" class="remove-rank btn btn-danger" 
+                                    data-rank-id="{{ $rank->id }}" data-url="{{ route('delete-rank', $rank->id) }}" 
+                                    data-rank-name="{{ $rank->name }}">
                                     Delete
                                 </a>
                                 @else
@@ -67,18 +61,18 @@ Crew Members
                         @endforeach
                         </tbdy>
                 </table>
-                {{ $crewMembers->links() }}
+                {{ $ranks->links() }}
             </div>
 
             <br>
 
             <a href="/dashboard" class="btn btn-primary">Back</a>
-            <a href="/crew-members/create" class="btn btn-primary">Add</a>
+            <a href="/ranks/create" class="btn btn-primary">Add</a>
         </div>
     </div>
 </div>
 
-<div id="crewMemberModal" class="modal fade" role="dialog">
+<div id="rankModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content text-center">
             <div class="modal-header bg-primary">
@@ -86,8 +80,8 @@ Crew Members
                 <button type="button" class="close" data-dismiss="modal" aria-label="close"></button>
             </div>
             <div class="modal-body">
-                <h5 align="center">Are you sure want to delete this Crew member?</h5>
-                <span id="crewMemberName" class="text-info" font-weight-bold></span>
+                <h5 align="center">Are you sure want to delete this Rank?</h5>
+                <span id="rankName" class="text-info" font-weight-bold></span>
             </div>
             <div class="modal-footer">
                 <button type="button" name="confirm_button" id="confirm_button" class="btn btn-danger">Confirm</button>
@@ -98,39 +92,39 @@ Crew Members
 </div>
 
 <script>
-    var dataCrewMemberId, dataUrl, dataCrewMemberName;
+    var dataRankId, dataUrl, dataRankName;
 
-    $(".remove-crew-member").on("click", function() {
-        dataCrewMemberId = $(this).attr('data-crew-member-id');
-        dataCrewMemberName = $(this).attr('data-crew-member-name');
+    $(".remove-rank").on("click", function() {
+        dataCrewMemberId = $(this).attr('data-rank-id');
+        dataCrewMemberName = $(this).attr('data-rank-name');
         dataUrl = $(this).attr('data-url');
-        $('#crewMemberModal').modal('show');
-        $('#crewMemberName').text(dataCrewMemberName);
+        $('#rankModal').modal('show');
+        $('#rankName').text(dataRankName);
     });
 
     $("#confirm_button").click(function() {
         $.ajax({
             url: dataUrl,
             success: function(data) {
-                $("#crewMemberModal").modal('hide');
-                $("#crewMemberTable").load(location.href + " #crewMemberTable");
+                $("#rankModal").modal('hide');
+                $("#rankTable").load(location.href + " #rankTable");
             }
         });
     });
 
-    $("#searchCrewMembers").keyup(function() {
+    $("#searchRanks").keyup(function() {
         let text = $(this).val();
 
         console.log(text);
 
         $.ajax({
-            url: "{{ route('search-crew-members') }}",
+            url: "{{ route('search-ranks') }}",
             data: {
                 text, text
             },
             success: function(data) {
-                $('#crewMemberData').html(data);
-                $('#crewMemberData').show();
+                $('#rankData').html(data);
+                $('#rankData').show();
             }
         });
     });

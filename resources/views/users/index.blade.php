@@ -7,19 +7,19 @@ Users
 
 
 @section('main')
-<div class="container" style="margin-top: 50px;">
+<div class="container custom-container">
     <div class="row justify-content-center">
         <div class="col-md-12">
 
             <a href="/dashboard">Dashboard</a> / Users
 
-            <input type="text" name="searchUsers" id="searchUsers" class="float-right col-md-8 col-lg-2" plaeholder="search">
+            <input type="text" name="searchUsers" id="searchUsers" class="float-right search-input" placeholder="search">
 
             <br></br>
 
             <div class="card">
                 <div class="card-header bg-primary">
-                    <h5 class="white">List Of Users</h5>
+                    <h5 class="text-white">List Of Users</h5>
                 </div>
 
                 <div class="card-body">

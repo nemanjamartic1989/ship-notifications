@@ -1,3 +1,7 @@
-.block-template {
+.custom-container {
     margin-top: 50px;
+}
+
+.search-input {
+    float:right;
 }

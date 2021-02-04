@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShipController;
 use App\Http\Controllers\CrewMemberController;
+use App\Http\Controllers\RankController;
 
 
 /*
@@ -62,4 +63,19 @@ Route::group(['prefix' => 'crew-members'], function () {
         ->name('delete-crew-member');
     Route::get('/search', [CrewMemberController::class, 'search'])
         ->name('search-crew-members');
+});
+
+Route::group(['prefix' => 'ranks'], function () {
+    Route::get('/', [RankController::class, 'index']);
+    Route::get('/create', [RankController::class, 'create']);
+    Route::get('/edit/{id}', [RankController::class, 'edit']);
+    Route::get('/show/{id}', [RankController::class, 'show']);
+    Route::post('/store', [RankController::class, 'store'])
+        ->name('store-rank');
+    Route::post('/update/{id}', [RankController::class, 'update'])
+        ->name('update-rank');
+    Route::get('/delete/{id}', [RankController::class, 'destroy'])
+        ->name('delete-rank');
+    Route::get('/search', [RankController::class, 'search'])
+        ->name('search-ranks');
 });

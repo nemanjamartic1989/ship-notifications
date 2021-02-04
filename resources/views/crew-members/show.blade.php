@@ -3,9 +3,9 @@
 @endsection
 
 @extends('includes.master')
-<div class="container block-template">
+<div class="container custom-container">
     <div class="row justify-content-center">
-        <div class="com-md-12">
+        <div class="com-md-10">
 
             <a href="/dashboard">Dashboard</a> / <a href="/crew-members">Crew Members</a> / Show Ship
 

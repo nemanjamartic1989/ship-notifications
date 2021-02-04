@@ -7,13 +7,13 @@ Ships
 
 
 @section('main')
-<div class="container" style="margin-top: 50px;">
+<div class="container custom-container">
     <div class="row justify-content-center">
         <div class="col-md-12">
 
             <a href="/dashboard">Dashboard</a> / Ships
 
-            <input type="text" name="searchShips" id="searchShips" class="float-right col-md-8 col-lg-2" plaeholder="search">
+            <input type="text" name="searchShips" id="searchShips" class="float-right search-input" placeholder="search">
 
             <br></br>
 
@@ -58,13 +58,11 @@ Ships
                                 @if(Auth::user()->access_level_id == 1)
                                 <a href="{{ url('ships/show', $ship->id) }}" class="btn btn-primary">Show</a>
                                 <a href="{{ url('ships/edit', $ship->id) }}" class="btn btn-success">Edit</a>
-                                <a href="javascript:void(0)" class="remove-ship btn btn-danger" 
-                                    data-ship-id="{{ $ship->id }}" data-url="{{ route('delete-ship', $ship->id) }}" 
-                                    data-ship-name="{{ $ship->ship_name }}">
+                                <a href="javascript:void(0)" class="remove-ship btn btn-danger" data-ship-id="{{ $ship->id }}" data-url="{{ route('delete-ship', $ship->id) }}" data-ship-name="{{ $ship->ship_name }}">
                                     Delete
                                 </a>
                                 @else
-                                    /
+                                /
                                 @endif
                             </td>
                         </tr>
@@ -130,7 +128,8 @@ Ships
         $.ajax({
             url: "{{ route('search-ships') }}",
             data: {
-                text, text
+                text,
+                text
             },
             success: function(data) {
                 $('#shipsData').html(data);

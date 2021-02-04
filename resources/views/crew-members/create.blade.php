@@ -1,13 +1,13 @@
 @section('title')
-    Create Crew Member
+Create Crew Member
 @endsection
 
 @extends('includes.master')
 
 @section('main')
-<div class="container block-template">
+<div class="container custom-container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-8">
 
             <a href="/dashboard">Dashboard</a> / <a href="/crew-members">Crew members</a> / Create
 
@@ -36,24 +36,24 @@
                 </div>
 
                 <div class="card-body">                 
-                    <form action="{{ route('store-crew-member') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('store-crew-member') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <div class="form-group">
+                        <div class="form-group p-2">
                             <label for="name">Name</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="name">
                             <span id="crewMemberNameError" class="form-text text-error"></span>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group p-2">
                             <label for="surname">Surname</label>
                             <input type="text" class="form-control" id="surname" name="surname" placeholder="surname">
                             <span id="crewMemberSurnameError" class="form-text text-error"></span>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group p-2">
                             <label for="email">Email</label>
                             <input type="text" class="form-control" id="email" name="email" placeholder="email">
                             <span id="crewMemberEmailError" class="form-text text-error"></span>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group p-2">
                             <label for="ship_id">Select Ship</label>
                             <select id="ship_id" name="ship_id" class="form-control">
                                 @foreach($ships as $ship)
@@ -61,18 +61,19 @@
                                 @endforeach
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="form-group p-2">
+                            <a href="/crew-members" class="btn btn-primary">Back</a>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
                     </form>      
                 </div>            
             </div>        
 
-                
-            </div>
 
-            <br>
-
-            <a href="/dashboard" class="btn btn-primary">Back</a>
-            <a href="/ships/create" class="btn btn-primary">Add</a>
         </div>
+
+        <br>
+
     </div>
+</div>
 @endsection
