@@ -63,7 +63,9 @@ Create Crew Member
                         </div>
                         <div class="form-group p-2">
                             <a href="/crew-members" class="btn btn-primary">Back</a>
+                            @if(Auth::user()->access_level_id == 1)
                             <button type="submit" class="btn btn-primary">Save</button>
+                            @endif
                         </div>
                     </form>      
                 </div>            

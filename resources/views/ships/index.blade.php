@@ -77,7 +77,9 @@ Ships
             <br>
 
             <a href="/dashboard" class="btn btn-primary">Back</a>
+            @if(Auth::user()->access_level_id == 1)
             <a href="/ships/create" class="btn btn-primary">Add</a>
+            @endif
         </div>
     </div>
 </div>
