@@ -69,7 +69,9 @@
                                     <th scope="col">Crew Members assigned to <span class="text-danger">{{ $ship->ship_name }}</span></th>
                                     <td>
                                     @foreach ($ship->crewMembers as $crewMember)
-                                        {{ $crewMember->name }} {{ $crewMember->surname }}, <br>    
+                                        @if($crewMember->is_deleted == 0)
+                                        {{ $crewMember->name }} {{ $crewMember->surname }}, <br> 
+                                        @endif   
                                     @endforeach           
                                     </td>
                                 </th>
