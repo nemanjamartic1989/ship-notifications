@@ -10,7 +10,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            AccessLevelSeeder::class
+            AccessLevelSeeder::class,
+            UserSeeder::class
         ]);
     }
 }
