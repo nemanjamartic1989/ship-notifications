@@ -12,7 +12,7 @@ class Ship extends Model
 
     public static $created_rules = [
         'name' => 'required',
-        'serial_number' => 'required|min:8|max:8',
+        'serial_number' => 'required|min:8|max:8|unique:ships',
         'image' => 'required|mimes:jpeg,jpg,png,gif|max:2048'
     ];
 
