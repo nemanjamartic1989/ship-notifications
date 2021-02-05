@@ -41,9 +41,7 @@ class ShipRepository implements ShipRepositoryInterface
         if ($request->file('image')) {
             $image = time().'.ships.'.$request->image->getClientOriginalExtension();
             $request->image->move(public_path('/images/ships'), $image);
-        } else {
-            $image = null;
-        }
+        } 
 
         $ship = new Ship;
 
