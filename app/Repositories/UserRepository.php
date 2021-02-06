@@ -10,7 +10,7 @@ class UserRepository implements UserRepositoryInterface
     public function getAll()
     {
         return User::where('is_deleted', 0)
-            ->orderBy('id', 'desc')->paginate();
+            ->orderBy('id', 'desc')->paginate(10);
     }
 
     public function searchUserData($text)

@@ -13,7 +13,7 @@ Users
             <br><br>            
             <div class="card">                
                 <div class="card-header bg-primary">                    
-                    <label class="white">Detail for User: {{ $user->name }}</label>                                    
+                    <label class="white">Detail for User: {{ $user->fullname }}</label>                                    
                 </div>
                                 
                 <div class="card-body">                                        
@@ -26,7 +26,7 @@ Users
                                         <div class="col-md-12">                            
                                             <div class="form-group">  
                                                 @if(isset($user->fullname))                              
-                                                {{ $user->fullname }} 
+                                                    {{ $user->fullname }} 
                                                 @endif                           
                                             </div>                       
                                         </div>                    
@@ -38,7 +38,7 @@ Users
                                         <div class="col-md-12">                        
                                             <div class="form-group"> 
                                                 @if(isset($user->email))                            
-                                                {{ $user->email }} 
+                                                    {{ $user->email }} 
                                                 @endif                       
                                             </div>                    
                                         </div>
@@ -50,7 +50,7 @@ Users
                                         <div class="col-md-12">                        
                                             <div class="form-group">   
                                                 @if(isset($user->access_level_name))                         
-                                                {{ $user->access_level_name }}
+                                                    {{ $user->access_level_name }}
                                                 @endif                        
                                             </div>                    
                                         </div>
