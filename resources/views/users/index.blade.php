@@ -103,6 +103,9 @@ Users
 
     $("#confirm_button").click(function() {
         $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
             url: dataUrl,
             method: "PUT",
             success: function(data) {
