@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Ship;
 use App\Models\User;
+use App\Models\Rank;
 
 class CrewMember extends Model
 {
@@ -25,5 +26,10 @@ class CrewMember extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function ranks()
+    {
+        return $this->belongsToMany(Rank::class);
     }
 }

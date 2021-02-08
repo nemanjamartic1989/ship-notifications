@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Http\CrewMember;
 
 class Rank extends Model
 {
@@ -11,4 +12,9 @@ class Rank extends Model
     public static $rules = [
         'name' => 'required'
     ];
+
+    public function crewMembers()
+    {
+        return $this->belongsToMany(CrewMember::class);
+    }
 }

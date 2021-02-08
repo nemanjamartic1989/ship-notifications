@@ -30,8 +30,7 @@ class UserRepository implements UserRepositoryInterface
                 'users.name as fullname',
                 'users.email',
                 'access_levels.name as access_level_name'
-            )
-            ->first();
+            )->first();
     }
 
     public function deleteUser($id)
