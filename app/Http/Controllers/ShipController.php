@@ -91,10 +91,6 @@ class ShipController extends Controller
 
     public function destroy($id)
     {
-        $ship = $this->shipRepository->deleteShip($id);
-
-        return redirect('ships')
-            ->with('status', 'success')
-            ->with('message', 'Ship deleted successfully!');
+        return $this->shipRepository->deleteShip($id);
     }
 }

@@ -92,6 +92,6 @@ class CrewMemberController extends Controller
 
     public function destroy($id)
     {
-        $this->crewMemberRepository->deleteCrewMember($id);
+        return $this->crewMemberRepository->deleteCrewMember($id);
     }
 }
