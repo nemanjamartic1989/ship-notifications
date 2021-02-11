@@ -2,8 +2,6 @@
 
 namespace App\Repositories;
 
-use Illuminate\Http\Request;
-
 interface RankRepositoryInterface
 {
     public function getAll();
@@ -14,7 +12,7 @@ interface RankRepositoryInterface
 
     public function storeRank($request);
 
-    public function updateRank(Request $request, $id);
+    public function updateRank($request, $id);
 
     public function searchRankData($text);
 

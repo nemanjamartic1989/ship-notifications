@@ -14,7 +14,7 @@ interface ShipRepositoryInterface
 
     public function storeShip($request);
 
-    public function updateShip(Request $request, $id);
+    public function updateShip($request, $id);
 
     public function searchShipData($text);
 

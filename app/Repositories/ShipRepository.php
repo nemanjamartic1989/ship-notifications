@@ -3,10 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Ship;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 
 class ShipRepository implements ShipRepositoryInterface
 {
@@ -54,7 +51,7 @@ class ShipRepository implements ShipRepositoryInterface
         return $ship;
     }
 
-    public function updateShip(Request $request, $id)
+    public function updateShip($request, $id)
     { 
         $ship = Ship::findOrFail($id);
 

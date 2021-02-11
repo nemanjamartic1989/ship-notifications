@@ -5,10 +5,7 @@ namespace App\Repositories;
 use App\Models\Ship;
 use App\Models\CrewMember;
 use App\Models\Rank;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class RankRepository implements RankRepositoryInterface
@@ -49,7 +46,7 @@ class RankRepository implements RankRepositoryInterface
         return $rank;
     }
 
-    public function updateRank(Request $request, $id)
+    public function updateRank($request, $id)
     {
         $rank = Rank::findOrFail($id);
 

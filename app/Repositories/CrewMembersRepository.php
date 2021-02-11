@@ -4,11 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Ship;
 use App\Models\CrewMember;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 
 class CrewMembersRepository implements CrewMembersRepositoryInterface
 {
@@ -51,7 +47,7 @@ class CrewMembersRepository implements CrewMembersRepositoryInterface
         return $crewMember;
     }
 
-    public function updateCrewMember(Request $request, $id)
+    public function updateCrewMember($request, $id)
     {
         $crewMember = CrewMember::findOrFail($id);
 

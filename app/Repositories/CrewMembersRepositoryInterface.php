@@ -2,8 +2,6 @@
 
 namespace App\Repositories;
 
-use Illuminate\Http\Request;
-
 interface CrewMembersRepositoryInterface
 {
     public function getAll();
@@ -14,7 +12,7 @@ interface CrewMembersRepositoryInterface
 
     public function storeCrewMember($request);
 
-    public function updateCrewMember(Request $request, $id);
+    public function updateCrewMember($request, $id);
 
     public function searchCrewMemberData($text);
 
