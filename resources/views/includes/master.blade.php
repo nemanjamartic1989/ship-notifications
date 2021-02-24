@@ -17,6 +17,7 @@
     <script src="{{ asset('js/main.js') }}"></script>
 </head>
 <body>
+    @include('includes.flash-messages')
     @yield('main')
 </body>
 </html>
