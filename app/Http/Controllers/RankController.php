@@ -6,7 +6,6 @@ use App\Repositories\RankRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Rank;
-use Illuminate\Support\Facades\Auth;
 
 class RankController extends Controller
 {
@@ -60,16 +59,13 @@ class RankController extends Controller
 
         if ($validator->fails()) {
             return redirect('ranks/create')
-                ->with('status', 'Validation error!')
                 ->with('errors', $validator->errors());
         }
         
-        $rank = $this->rankRepository->storeRank($request);
-
-        $rank->save();
+        $this->rankRepository->storeRank($request);
 
         return redirect('ranks')
-            ->with('message', 'Rank Created Successfully!');
+            ->with('created', 'Rank Created Successfully!');
     }
 
     public function update(Request $request, $id)
@@ -82,11 +78,9 @@ class RankController extends Controller
                 ->with('errors', $validator->errors());
         }
         
-        $rank = $this->rankRepository->updateRank($request, $id);
+        $this->rankRepository->updateRank($request, $id);
 
-        $rank->update();
-
-        return redirect('ranks')->with('message', 'Rank Updated Successfully!');
+        return redirect('ranks')->with('updated', 'Rank Updated Successfully!');
     }
 
     public function destroy($id)

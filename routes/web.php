@@ -43,7 +43,7 @@ Route::group(['prefix' => 'ships'], function () {
     Route::get('/show/{id}', [ShipController::class, 'show']);
     Route::post('/store', [ShipController::class, 'store'])
         ->name('ships-store');
-    Route::post('/update/{id}', [ShipController::class, 'update'])
+    Route::put('/update/{id}', [ShipController::class, 'update'])
         ->name('update-ship');
     Route::put('/delete/{id}', [ShipController::class, 'destroy'])
         ->name('delete-ship'); // In fact, this is update field in database where this item will not displayed.
@@ -58,7 +58,7 @@ Route::group(['prefix' => 'crew-members'], function () {
     Route::get('/show/{id}', [CrewMemberController::class, 'show']);
     Route::post('/store', [CrewMemberController::class, 'store'])
         ->name('store-crew-member');
-    Route::post('/update/{id}', [CrewMemberController::class, 'update'])
+    Route::put('/update/{id}', [CrewMemberController::class, 'update'])
         ->name('update-crew-member');
     Route::put('/delete/{id}', [CrewMemberController::class, 'destroy'])
         ->name('delete-crew-member'); // In fact, this is update field in database where this item will not displayed.
@@ -73,7 +73,7 @@ Route::group(['prefix' => 'ranks'], function () {
     Route::get('/show/{id}', [RankController::class, 'show']);
     Route::post('/store', [RankController::class, 'store'])
         ->name('store-rank');
-    Route::post('/update/{id}', [RankController::class, 'update'])
+    Route::put('/update/{id}', [RankController::class, 'update'])
         ->name('update-rank');
     Route::put('/delete/{id}', [RankController::class, 'destroy'])
         ->name('delete-rank'); // In fact, this is update field in database where this item will not displayed.

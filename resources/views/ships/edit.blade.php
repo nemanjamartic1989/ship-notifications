@@ -14,12 +14,7 @@ Edit Ship
             <br></br>
 
             <div class="card-body">
-                @if(session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
-                </div>
-                @endif
-                @if(session('status'))
+                @if(session('errors'))
                 <div class="alert alert-danger" role="alert">
                     <ul>
                         @foreach($errors->all() as $error)
@@ -38,6 +33,7 @@ Edit Ship
                 <div class="card-body">                 
                         <form action="{{ route('update-ship', $ship->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('put')
                         <div class="form-group p-2">
                             <label for="name">Name</label>
                             <input type="email" class="form-control" id="name" name="name" placeholder="name" value="{{ $ship->name }}">

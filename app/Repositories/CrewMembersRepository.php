@@ -58,6 +58,8 @@ class CrewMembersRepository implements CrewMembersRepositoryInterface
         $crewMember->created_by = Auth::user()->id;
         $crewMember->is_deleted = 0;
 
+        $crewMember->update();
+
         return $crewMember;
     }
 
@@ -71,7 +73,7 @@ class CrewMembersRepository implements CrewMembersRepositoryInterface
 
     public function showCrewMember($id)
     {
-        return CrewMember::with('ship')
+        return CrewMember::where('id', $id)->with('ship')
             ->where('is_deleted', 0)
             ->first();
     }

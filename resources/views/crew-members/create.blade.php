@@ -14,12 +14,7 @@ Create Crew Member
             <br></br>
 
             <div class="card-body">
-                @if(session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
-                </div>
-                @endif
-                @if(session('status'))
+                @if(session('errors'))
                 <div class="alert alert-danger" role="alert">
                     <ul>
                         @foreach($errors->all() as $error)
@@ -40,17 +35,17 @@ Create Crew Member
                         @csrf
                         <div class="form-group p-2">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="name">
+                            <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" placeholder="name">
                             <span id="crewMemberNameError" class="form-text text-error"></span>
                         </div>
                         <div class="form-group p-2">
                             <label for="surname">Surname</label>
-                            <input type="text" class="form-control" id="surname" name="surname" placeholder="surname">
+                            <input type="text" class="form-control" id="surname" name="surname" value="{{ old('surname') }}" placeholder="surname">
                             <span id="crewMemberSurnameError" class="form-text text-error"></span>
                         </div>
                         <div class="form-group p-2">
                             <label for="email">Email</label>
-                            <input type="text" class="form-control email-validation" id="email" name="email" placeholder="email">
+                            <input type="text" class="form-control email-validation" id="email" name="email" value="{{ old('email') }}" placeholder="email">
                             <span id="crewMemberEmailError" class="form-text email-error text-danger"></span>
                         </div>
                         <div class="form-group p-2">

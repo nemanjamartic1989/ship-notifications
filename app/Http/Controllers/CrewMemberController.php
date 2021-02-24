@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Repositories\CrewMembersRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Models\Ship;
 use App\Models\CrewMember;
-use Illuminate\Support\Facades\Auth;
 
 class CrewMemberController extends Controller
 {
@@ -61,7 +59,6 @@ class CrewMemberController extends Controller
 
         if ($validator->fails()) {
             return redirect('crew-members/create')
-                ->with('status', 'Validation errors!')
                 ->with('errors', $validator->errors());
         }
 
@@ -70,7 +67,7 @@ class CrewMemberController extends Controller
         $crewMember->save();
 
         return redirect('crew-members')
-            ->with('message', 'Crew Member Created Successfully!');
+            ->with('created', 'Crew Member Created Successfully!');
     }
 
     public function update(Request $request, $id)
@@ -83,11 +80,9 @@ class CrewMemberController extends Controller
                 ->with('errors', $validator->errors());
         }
 
-        $crewMember = $this->crewMemberRepository->updateCrewMember($request, $id);
+        $this->crewMemberRepository->updateCrewMember($request, $id);
 
-        $crewMember->update();
-
-        return redirect('crew-members')->with('message', 'Crew Member Updated Successfully!');
+        return redirect('crew-members')->with('updated', 'Crew Member Updated Successfully!');
     }
 
     public function destroy($id)

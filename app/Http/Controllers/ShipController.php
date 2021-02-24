@@ -6,7 +6,6 @@ use App\Repositories\ShipRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Ship;
-use Illuminate\Support\Facades\Auth;
 
 class ShipController extends Controller
 {
@@ -43,16 +42,13 @@ class ShipController extends Controller
 
         if ($validator->fails()) {
             return redirect('ships/create')
-                ->with('status', 'danger')
                 ->with('errors', $validator->errors());
         }
         
-        $ship = $this->shipRepository->storeShip($request);
-
-        $ship->save();
+        $this->shipRepository->storeShip($request);
 
         return redirect('ships')
-            ->with('message', 'Ship Created Successfully!');
+            ->with('created', 'Ship Created Successfully!');
     }
 
     public function search(Request $request)
@@ -78,15 +74,12 @@ class ShipController extends Controller
 
         if ($validator->fails()) {
             return redirect('ships/edit/' . $id)
-                ->with('status', 'danger')
                 ->with('errors', $validator->errors());
         }
 
-        $ship = $this->shipRepository->updateShip($request, $id);
+        $this->shipRepository->updateShip($request, $id);
 
-        $ship->update();
-
-        return redirect('ships')->with('message', 'Ship Updated Successfully!');
+        return redirect('ships')->with('updated', 'Ship Updated Successfully!');
     }
 
     public function destroy($id)

@@ -43,6 +43,8 @@ class RankRepository implements RankRepositoryInterface
         $rank->created_by = Auth::user()->id;
         $rank->is_deleted = 0;
 
+        $rank->save();
+
         return $rank;
     }
 
@@ -53,6 +55,8 @@ class RankRepository implements RankRepositoryInterface
         $rank->name = $request->name;
         $rank->created_by = Auth::user()->id;
         $rank->is_deleted = 0;
+
+        $rank->update();
 
         return $rank;
     }

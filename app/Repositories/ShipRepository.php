@@ -48,6 +48,8 @@ class ShipRepository implements ShipRepositoryInterface
         $ship->created_by = Auth::user()->id;
         $ship->is_deleted = 0;
 
+        $ship->save();
+
         return $ship;
     }
 
@@ -71,6 +73,8 @@ class ShipRepository implements ShipRepositoryInterface
         
         $ship->created_by = Auth::user()->id;
         $ship->is_deleted = 0;
+
+        $ship->update();
 
         return $ship;
     }

@@ -7,14 +7,14 @@
     <div class="row justify-content-center">
         <div class="com-md-10">
 
-            <a href="/dashboard">Dashboard</a> / <a href="/crew-members">Crew Members</a> / Show Ship
+            <a href="/dashboard">Dashboard</a> / <a href="/crew-members">Crew Members</a> / Show Crew Member
 
             <br><br>
 
             <div class="card">
                 <div class="card-header bg-primary">
                     <h5 class="text-white">
-                        View Ship: {{ $crewMember->name }} {{ $crewMember->surname }}
+                        View Crew Member: {{ $crewMember->name }} {{ $crewMember->surname }}
                     </h5>
                 </div>
 
